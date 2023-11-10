@@ -17,13 +17,16 @@
 import psycopg2
 
 conn = psycopg2.connect(host = '127.0.0.1',
-                        database = 'sololeveling',
+                        database = 'postgres',
                         user = 'postgres',
-                        password = '1234567')
+                        password = '123')
 
 cur = conn.cursor()
-cur.execute('Select company_name from production_company limit 5;')
-username = [r[0] for r in cur.fetchall()]
+#cur.execute('Select first_name from actor limit 5;')
+#username = [r[0] for r in cur.fetchall()]
+#print(username)
+
+usernames= ['Arlan','Tatzhik','Sanzhik']
 Found= False
 while not Found:
     username = input('Введите свой логин: ')
@@ -31,7 +34,17 @@ while not Found:
         print('Поздравляю вы в списке')
         Found=True
     else:
-        print('Вы не местный. Зарегестрируйтесь правельно)')
+       print('Вы не местный. Зарегестрируйтесь правельно)')
+def binary_search(username):
+    if (username) in usernames:
+        return True
+    else:
+        return False
+
+#fdfsdgfsd
+
+
+
 
 conn.commit()
 cur.close()
