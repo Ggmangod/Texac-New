@@ -19,27 +19,42 @@ import psycopg2
 conn = psycopg2.connect(host = '127.0.0.1',
                         database = 'postgres',
                         user = 'postgres',
-                        password = '123')
+                        password = '1234567')
 
-cur = conn.cursor()
-#cur.execute('Select first_name from actor limit 5;')
+cur = conn.cursor()  
+cur.execute("SELECT * FROM onimder LIMIT 5;")  
+results = cur.fetchall()  
+print(results)  
+
+with open('фвыа.csv', 'w', newline='', encoding='utf-8') as csvfile:  
+    csvwriter = csv.writer(csvfile)  
+    csvwriter.writerows(results)  
+  
+  
+  
+cur.close()  
+conn.close()
+
+
+
+
 #username = [r[0] for r in cur.fetchall()]
 #print(username)
 
-usernames= ['Arlan','Tatzhik','Sanzhik']
-Found= False
-while not Found:
-    username = input('Введите свой логин: ')
-    if username in usernames:
-        print('Поздравляю вы в списке')
-        Found=True
-    else:
-       print('Вы не местный. Зарегестрируйтесь правельно)')
-def binary_search(username):
-    if (username) in usernames:
-        return True
-    else:
-        return False
+#usernames= ['Arlan','Tatzhik','Sanzhik']
+#Found= False
+#while not Found:
+#    username = input('Введите свой логин: ')
+#    if username in usernames:
+#        print('Поздравляю вы в списке')
+#        Found=True
+#    else:
+#       print('Вы не местный. Зарегестрируйтесь правельно)')
+#def binary_search(username):
+#    if (username) in usernames:
+#        return True
+#    else:
+#        return False
 
 #fdfsdgfsd
 
